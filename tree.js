@@ -55,6 +55,22 @@ function depth(root) {
 }
 console.log('Depth: ' + depth(root));
 
+function minDepth(root) {
+    if (root === null) {
+        return 0;
+    }
+    else if (root.left === null) {
+        return 1 + minDepth(root.right);
+    }
+    else if (root.right === null) {
+        return 1 + minDepth(root.left);
+    }
+    let leftDepth = minDepth(root.left);
+    let rightDepth = minDepth(root.right);
+    return 1 + Math.min(leftDepth, rightDepth);
+}
+console.log('minDepth: ' + minDepth(root));
+
 function binarySearch(root, val) {
     if (root === null) {
         return null;
@@ -75,4 +91,23 @@ if (result) {
 }
 else {
     console.log('Value not found in the tree');
+}
+
+function isBalanced(root) {
+    if (root === null) {
+        return true;
+    }
+    let leftHeight = depth(root.left);
+    let rightHeight = depth(root.right);
+    if (leftHeight - rightHeight > 1
+    || leftHeight - rightHeight < -1) {
+        return false;
+    }
+    return isBalanced(root.left) && isBalanced(root.right);
+}
+if (isBalanced(root)) {
+    console.log('The tree is balanced');
+}
+else {
+    console.log('The tree is not balanced');
 }
