@@ -99,8 +99,7 @@ function isBalanced(root) {
     }
     let leftHeight = depth(root.left);
     let rightHeight = depth(root.right);
-    if (leftHeight - rightHeight > 1
-    || leftHeight - rightHeight < -1) {
+    if (leftHeight - rightHeight > 1 || leftHeight - rightHeight < -1) {
         return false;
     }
     return isBalanced(root.left) && isBalanced(root.right);
