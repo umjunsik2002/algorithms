@@ -44,3 +44,13 @@ function postOrder(root, result = []) {
     return result;
 }
 console.log('Postorder: ' + postOrder(root));
+
+function depth(root) {
+    if (root === null) {
+        return 0;
+    }
+    let leftDepth = depth(root.left);
+    let rightDepth = depth(root.right);
+    return 1 + Math.max(leftDepth, rightDepth);
+}
+console.log('Depth: ' + depth(root));
