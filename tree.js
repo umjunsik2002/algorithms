@@ -159,3 +159,18 @@ function sum(root) {
     return root.val + sum(root.left) + sum(root.right);
 }
 console.log('Sum: ' + sum(root));
+
+// Merging two trees and the sum of their corresponding values
+function mergeTrees(tree1, tree2) {
+    if (tree1 === null) {
+        return tree2;
+    }
+    if (tree2 === null) {
+        return tree1;
+    }
+    let copy = new TreeNode(tree1.val + tree2.val);
+    copy.left = mergeTrees(tree1.left, tree2.left);
+    copy.right = mergeTrees(tree1.right, tree2.right);
+    return copy;
+}
+console.log('Merged tree (inOrder): ' + inOrder(mergeTrees(root, copy)));
