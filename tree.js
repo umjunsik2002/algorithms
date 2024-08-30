@@ -12,6 +12,7 @@ root.right = new TreeNode(6);
 root.right.left = new TreeNode(5);
 root.right.right = new TreeNode(7);
 
+// preOrder
 function preOrder(root, result = []) {
     if (root === null) {
         return result;
@@ -23,6 +24,7 @@ function preOrder(root, result = []) {
 }
 console.log('Preorder: ' + preOrder(root));
 
+// inOrder
 function inOrder(root, result = []) {
     if (root === null) {
         return result;
@@ -34,6 +36,7 @@ function inOrder(root, result = []) {
 }
 console.log('Inorder: ' + inOrder(root));
 
+// postOrder
 function postOrder(root, result = []) {
     if (root === null) {
         return result;
@@ -45,6 +48,7 @@ function postOrder(root, result = []) {
 }
 console.log('Postorder: ' + postOrder(root));
 
+// The depth of the tree
 function depth(root) {
     if (root === null) {
         return 0;
@@ -55,6 +59,7 @@ function depth(root) {
 }
 console.log('Depth: ' + depth(root));
 
+// The minimum depth of the tree
 function minDepth(root) {
     if (root === null) {
         return 0;
@@ -71,6 +76,7 @@ function minDepth(root) {
 }
 console.log('minDepth: ' + minDepth(root));
 
+// Binary search of the binary search tree
 function binarySearch(root, val) {
     if (root === null) {
         return null;
@@ -90,9 +96,10 @@ if (result) {
     console.log('Search 2: ' + result.val);
 }
 else {
-    console.log('Value not found in the tree');
+    console.log('Value NOT found in the tree');
 }
 
+// Checking if the tree is balanced
 function isBalanced(root) {
     if (root === null) {
         return true;
@@ -108,5 +115,47 @@ if (isBalanced(root)) {
     console.log('The tree is balanced');
 }
 else {
-    console.log('The tree is not balanced');
+    console.log('The tree is NOT balanced');
 }
+
+// Cloning a new tree
+function copyTree(root) {
+    if (root === null) {
+        return null;
+    }
+    let copy = new TreeNode(root.val);
+    copy.left = copyTree(root.left);
+    copy.right = copyTree(root.right);
+    return copy;
+}
+let copy = copyTree(root);
+
+// Checking if two trees have same values
+function isSameTree(tree1, tree2) {
+    if (tree1 === null && tree2 === null) {
+        return true;
+    }
+    else if (tree1 === null || tree2 === null) {
+        return false;
+    }
+    return (
+        tree1.val === tree2.val &&
+        isSameTree(tree1.left, tree2.left) &&
+        isSameTree(tree1.right, tree2.right)
+    );
+}
+if (isSameTree(root, copy)) {
+    console.log('The root tree and the copy tree are identical');
+}
+else {
+    console.log('The root tree and the copy tree are NOT identical');
+}
+
+// The sum of the values of the tree
+function sum(root) {
+    if (root === null) {
+        return 0;
+    }
+    return root.val + sum(root.left) + sum(root.right);
+}
+console.log('Sum: ' + sum(root));
