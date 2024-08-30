@@ -176,7 +176,7 @@ function mergeTrees(tree1, tree2) {
 console.log('Merged tree (inOrder): ' + inOrder(mergeTrees(root, copy)));
 
 // Returning an array with arrays of values in same levels
-function groupLevels(root, n = 0, result = []) {
+function levelOrder(root, n = 0, result = []) {
     if (root === null) {
         return result;
     }
@@ -184,8 +184,8 @@ function groupLevels(root, n = 0, result = []) {
         result.push([]);
     }
     result[n].push(root.val);
-    groupLevels(root.left, n + 1, result);
-    groupLevels(root.right, n + 1, result);
+    levelOrder(root.left, n + 1, result);
+    levelOrder(root.right, n + 1, result);
     return result;
 }
-console.log(groupLevels(root));
+console.log(levelOrder(root));
