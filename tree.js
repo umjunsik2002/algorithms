@@ -181,11 +181,27 @@ function levelOrder(root, n = 0, result = []) {
         return result;
     }
     if (!result[n]) {
-        result.push([]);
+        result[n] = [];
     }
     result[n].push(root.val);
     levelOrder(root.left, n + 1, result);
     levelOrder(root.right, n + 1, result);
     return result;
 }
+function levelOrderBottom(root, n = 0, result = []) {
+    if (root === null) {
+        return result;
+    }
+    if (result[n] === undefined) {
+        result[n] = [];
+    }
+    result[n].push(root.val);
+    levelOrderBottom(root.left, n + 1, result);
+    levelOrderBottom(root.right, n + 1, result);
+    if (n === 0) {
+        return result.reverse();
+    }
+    return result;
+};
 console.log(levelOrder(root));
+console.log(levelOrderBottom(root));
