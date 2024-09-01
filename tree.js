@@ -192,7 +192,7 @@ function levelOrderBottom(root, n = 0, result = []) {
     if (root === null) {
         return result;
     }
-    if (result[n] === undefined) {
+    if (!result[n]) {
         result[n] = [];
     }
     result[n].push(root.val);
@@ -205,3 +205,25 @@ function levelOrderBottom(root, n = 0, result = []) {
 };
 console.log(levelOrder(root));
 console.log(levelOrderBottom(root));
+
+function paths(root) {
+    let paths = [];
+    
+    function dfs(node, path = []) {
+        if (node === null) {
+            return;
+        }
+        path = path.concat(node.val);
+        if (node.left === null && node.right === null) {
+            paths.push(path);
+        }
+        else {
+            dfs(node.left, path);
+            dfs(node.right, path);
+        }
+    }
+    
+    dfs(root);
+    return paths;
+}
+console.log(paths(root));
