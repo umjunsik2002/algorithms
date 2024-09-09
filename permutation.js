@@ -32,6 +32,26 @@ function getPermutations(array) {
     return ret;
 }
 console.log(getPermutations([1, 2, 3]));
+/*
+[
+    [],
+    [1],
+    [1, 2],
+    [1, 2, 3],
+    [1, 3],
+    [1, 3, 2],
+    [2],
+    [2, 1],
+    [2, 1, 3],
+    [2, 3],
+    [2, 3, 1],
+    [3],
+    [3, 1],
+    [3, 1, 2],
+    [3, 2],
+    [3, 2, 1]
+]
+*/
 
 function getPermutationsWithSize(array, size) {
     let ret = [];
@@ -52,3 +72,4 @@ function getPermutationsWithSize(array, size) {
     return ret;
 }
 console.log(getPermutationsWithSize([1, 2, 3], 2));
+// [[1, 2], [1, 3], [2, 1], [2, 3], [3, 1], [3, 2]]
