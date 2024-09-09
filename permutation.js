@@ -20,7 +20,9 @@ function getPermutations(array) {
     let ret = [];
     
     function permute(array, m = []) {
-        ret.push(m);
+        if (m.length > 0) {
+            ret.push(m);
+        }
         for (let i = 0; i < array.length; i++) {
             let curr = array.slice();
             let next = curr.splice(i, 1);
@@ -34,7 +36,6 @@ function getPermutations(array) {
 console.log(getPermutations([1, 2, 3]));
 /*
 [
-    [],
     [1],
     [1, 2],
     [1, 2, 3],
