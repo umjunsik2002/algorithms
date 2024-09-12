@@ -206,6 +206,7 @@ function levelOrderBottom(root, n = 0, result = []) {
 console.log(levelOrder(root));
 console.log(levelOrderBottom(root));
 
+// Print all the paths in the tree
 function paths(root) {
     let paths = [];
     
@@ -227,3 +228,25 @@ function paths(root) {
     return paths;
 }
 console.log(paths(root));
+
+// Sort and convert an array to BST
+function arrayToBST(array) {
+    array.sort((a, b) => a - b);
+
+    function buildBST(start, end) {
+        if (start > end) {
+            return null;
+        }
+        
+        let mid = Math.floor((start + end) / 2);
+        let root = new TreeNode(array[mid]);
+
+        root.left = buildBST(start, mid - 1);
+        root.right = buildBST(mid + 1, end);
+
+        return root;
+    }
+
+    return buildBST(0, array.length - 1);
+}
+console.log(arrayToBST([1, 2, 3, 4, 5, 6, 7]));
